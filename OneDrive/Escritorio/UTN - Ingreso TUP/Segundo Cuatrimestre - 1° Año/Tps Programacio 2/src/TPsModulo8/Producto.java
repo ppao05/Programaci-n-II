@@ -24,7 +24,7 @@ public class Producto implements Pagable {
 
     @Override
     public double calcularTotal() {
-        return precio;   // el total de un producto es su precio
+        return precio;   
     }
 
     @Override

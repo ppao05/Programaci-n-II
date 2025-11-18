@@ -46,7 +46,7 @@ public class Pedido implements Pagable {
         return cliente;
     }
 
-    // Cambia el estado y notifica al cliente
+  
     public void cambiarEstado(EstadoPedido nuevoEstado) {
         this.estado = nuevoEstado;
         cliente.notificar("El estado de tu pedido cambió a: " + nuevoEstado);

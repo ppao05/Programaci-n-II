@@ -116,7 +116,7 @@ public class ExcepcionesDemo {
         conversionCadenaANumero(sc);
 
         // 3) Lectura de archivo (normal)
-        lecturaArchivo("ejemplo.txt"); // probá con un archivo que exista y otro que no
+        lecturaArchivo("ejemplo.txt"); // 
 
         // 4) Excepción personalizada
         pruebaEdad(sc);
