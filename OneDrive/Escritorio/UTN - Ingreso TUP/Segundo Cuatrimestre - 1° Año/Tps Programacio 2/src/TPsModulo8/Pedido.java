@@ -11,15 +11,23 @@ package TPsModulo8;
 import java.util.ArrayList;
 import java.util.List;
 
-class Pedido implements Pagable {
-    private List<Producto> productos;
+public class Pedido implements Pagable {
+
+    public enum EstadoPedido {
+        PENDIENTE,
+        PAGADO,
+        ENVIADO,
+        ENTREGADO
+    }
+
     private Cliente cliente;
-    private String estado; // Ej: "NUEVO", "PAGADO", "ENVIADO"
+    private List<Producto> productos;
+    private EstadoPedido estado;
 
     public Pedido(Cliente cliente) {
         this.cliente = cliente;
         this.productos = new ArrayList<>();
-        this.estado = "NUEVO";
+        this.estado = EstadoPedido.PENDIENTE;
     }
 
     public void agregarProducto(Producto p) {
@@ -30,14 +38,18 @@ class Pedido implements Pagable {
         return productos;
     }
 
-    public String getEstado() {
+    public EstadoPedido getEstado() {
         return estado;
     }
 
-    public void setEstado(String nuevoEstado) {
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    // Cambia el estado y notifica al cliente
+    public void cambiarEstado(EstadoPedido nuevoEstado) {
         this.estado = nuevoEstado;
-        // 5) Notificar al cliente cuando el estado cambia
-        cliente.notificar("Tu pedido ha cambiado de estado a: " + nuevoEstado);
+        cliente.notificar("El estado de tu pedido cambió a: " + nuevoEstado);
     }
 
     @Override
@@ -47,5 +59,13 @@ class Pedido implements Pagable {
             total += p.calcularTotal();
         }
         return total;
+    }
+
+    public void mostrarResumen() {
+        System.out.println("Pedido de " + cliente.getNombre() + " - Estado: " + estado);
+        for (Producto p : productos) {
+            System.out.println("  - " + p);
+        }
+        System.out.println("Total: $" + calcularTotal());
     }
 }

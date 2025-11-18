@@ -8,23 +8,25 @@ package TPsModulo8;
  *
  * @author ppasa
  */
-class TarjetaCredito implements PagoConDescuento {
-    private String numeroTarjeta;
+public class TarjetaCredito implements PagoConDescuento {
 
-    public TarjetaCredito(String numeroTarjeta) {
-        this.numeroTarjeta = numeroTarjeta;
+    private String nroTarjeta;
+
+    public TarjetaCredito(String nroTarjeta) {
+        this.nroTarjeta = nroTarjeta;
     }
 
     @Override
     public double aplicarDescuento(double monto) {
-        // Ejemplo: 5% de recargo negativo = 5% de descuento
-        double descuento = monto * 0.05;
-        return monto - descuento;
+        // Ejemplo: 10% de descuento
+        double montoConDescuento = monto * 0.90;
+        System.out.println("Aplicando 10% de descuento con tarjeta. Total con descuento: $" + montoConDescuento);
+        return montoConDescuento;
     }
 
     @Override
     public void procesarPago(double monto) {
-        double montoConDescuento = aplicarDescuento(monto);
-        System.out.println("Pagando con Tarjeta de Crédito (" + numeroTarjeta + ") por $" + montoConDescuento);
+        System.out.println("Procesando pago de $" + monto + " con Tarjeta de crédito " + nroTarjeta);
     }
 }
+

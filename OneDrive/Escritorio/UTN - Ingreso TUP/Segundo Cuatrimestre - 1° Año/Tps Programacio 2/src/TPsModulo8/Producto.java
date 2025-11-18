@@ -8,7 +8,8 @@ package TPsModulo8;
  *
  * @author ppasa
  */
-    class Producto implements Pagable {
+public class Producto implements Pagable {
+
     private String nombre;
     private double precio;
 
@@ -17,23 +18,17 @@ package TPsModulo8;
         this.precio = precio;
     }
 
-    public String getNombre() {
-        return nombre;
-    }
+    public String getNombre() { return nombre; }
 
-    public double getPrecio() {
-        return precio;
-    }
+    public double getPrecio() { return precio; }
 
     @Override
     public double calcularTotal() {
-        // Para un producto, el total es su propio precio
-        return precio;
+        return precio;   // el total de un producto es su precio
     }
 
     @Override
     public String toString() {
-        return nombre + " ($" + precio + ")";
+        return nombre + " - $" + precio;
     }
 }
-

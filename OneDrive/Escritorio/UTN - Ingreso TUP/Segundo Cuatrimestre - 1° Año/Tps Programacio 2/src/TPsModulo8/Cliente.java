@@ -8,7 +8,8 @@ package TPsModulo8;
  *
  * @author ppasa
  */
-class Cliente implements Notificable {
+public class Cliente implements Notificable {
+
     private String nombre;
     private String email;
 
@@ -17,16 +18,12 @@ class Cliente implements Notificable {
         this.email = email;
     }
 
-    public String getNombre() {
-        return nombre;
-    }
+    public String getNombre() { return nombre; }
+
+    public String getEmail() { return email; }
 
     @Override
     public void notificar(String mensaje) {
-        // Podrías simular un envío de mail, SMS, etc.
-        System.out.println("[Notificación a " + nombre + " <" + email + ">] " + mensaje);
+        System.out.println("Notificando a " + nombre + " (" + email + "): " + mensaje);
     }
 }
-
-    
-
